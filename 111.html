@@ -35,5 +35,32 @@ orderVc.status = 0;<br>
 [mvc.userHomeViewController.navigationController pushViewController:orderVc animated:NO];<br>
 }
 </p>
+
+
+<p>
+-(NSMutableArray *)sectionTrainArray<br>
+{<br>
+//机构，基本信息<br>
+NSDictionary *organization = @{@"name":@"organization",@"sectionNumber":@1};<br>
+NSDictionary *baseInfo     = @{@"name":@"baseInfo",@"sectionNumber":@0};<br>
+NSDictionary *commentInfo  = @{@"name":@"commentInfo",@"sectionNumber":@1};//评价<br>
+NSDictionary *studentInfo  = @{@"name":@"studentInfo",@"sectionNumber":@0};//学员信息<br>
+NSDictionary *orderDetail  = @{@"name":@"orderDetail",@"sectionNumber":@0};<br>
+<br>
+NSMutableArray *sectionTrainArray = [[NSMutableArray alloc]initWithObjects:<br>
+organization,<br>
+baseInfo,<br>
+nil];<br>
+if (_order.status == 0 && _order.leftQuantity==0)<br>
+{<br>
+[sectionTrainArray addObject:commentInfo];<br>
+}<br>
+[sectionTrainArray addObject:studentInfo];<br>
+[sectionTrainArray addObject:orderDetail];<br>
+
+<br>
+return sectionTrainArray;<br>
+}<br>
+</p>
 </body>
 </html>
